@@ -1,0 +1,7 @@
+.test {
+  & h1 {
+    color: #ff0000;
+    font-size: 40px;
+    display: flex;
+  }
+}
