@@ -1,14 +1,16 @@
-const webpack = require('webpack');
-const path    = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+const path    = require('path')
+
+const indexHtml = path.join(__dirname, "app", "index.html")
 
 module.exports = {
-  entry: {
-    app: './src/js/app.js'
-  },
+  entry: [
+    path.join(__dirname, "app/js/", "app.js"),
+    indexHtml
+  ],
   output: {
-    path: path.resolve(__dirname, './build/assets'),
-    publicPath: '/assets/',
+    path: path.resolve(__dirname, './build'),
+    publicPath: './',
     filename: 'bundle.js'
   },
   module: {
@@ -16,17 +18,45 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: [/node_modules/],
-        use: [{
-          loader: 'babel-loader',
-          options: { presets: ['es2015'] }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: { presets: ['es2015'] }
         }]
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|sass)$/,
         use: [
           'style-loader',
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            query: {
+              name: 'img/[hash].[ext]'
+            }
+          },
+          'image-webpack-loader'
+        ]
+      },
+      {
+        test: indexHtml,
+        use: [
+          {
+            loader: 'file-loader',
+            query: {
+              name: '[name].[ext]'
+            }
+          },
+          'extract-loader',
+          'html-loader',
+          'markup-inline-loader'
         ]
       }
     ]
