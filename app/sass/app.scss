@@ -1,1 +1,11 @@
-@import "modules/test";
+// Reset
+@import 'base/reset';
+
+// Base
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/fonts';
+@import 'base/base';
+
+// Modules
+@import 'modules/test';
