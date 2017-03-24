@@ -1,0 +1,37 @@
+.header {
+  position: absolute;
+  padding-top: rem(40px);
+  
+  &__items {
+    display: flex;
+    align-items: center;
+    font-size: rem(12px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__name {
+    font-family: $ave-black;
+    display: flex;
+    align-items: center;
+
+    &:after {
+      content: '';
+      width: rem(1px);
+      height: rem(14px);
+      display: block;
+      background-color: $red;
+      margin: 0 rem(14px);
+    }
+  }
+
+  &__link {
+    font-family: $ave-light;
+
+    a {
+      text-decoration: none;
+      color: $black;      
+    }
+      
+  }
+}
