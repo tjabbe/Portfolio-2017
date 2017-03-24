@@ -3,29 +3,5 @@ Function to convert px to rem
 --------------------------------------------------------------*/
 
 @function rem($px, $base: $base-font-size) {
-    @return ($px / $base) * 1rem;
-}
-
-/*--------------------------------------------------------------
-Mixin for easy font declaration
---------------------------------------------------------------*/
-
-@mixin font-face($style-name, $weight, $file, $family, $category:"") {
-    $filepath: "fonts/" + $family + "/" + $file;
-    @font-face {
-        font-family: "#{$style-name}";
-        src: url($filepath + ".eot");
-        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
-    }
-    %#{$style-name} {
-        font: {
-            @if $category != "" {
-                family: "#{$style-name}", #{$category};
-            }
-            @else {
-                family: "#{$style-name}";
-                weight: $weight;
-            }
-        }
-    }
+  @return ($px / $base) * 1rem;
 }
