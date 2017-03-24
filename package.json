@@ -4,7 +4,7 @@
   "description": "Portfolio",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --inline --hot"
   },
   "repository": "https://github.com/tjabbe/tjabbe.github.io.git",
   "author": "Martin Goutry",
@@ -17,6 +17,7 @@
     "extract-loader": "^0.1.0",
     "file-loader": "^0.10.1",
     "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.2.0",
     "markup-inline-loader": "^0.1.3",
     "node-sass": "^4.5.1",

@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path    = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const indexHtml = path.join(__dirname, "app", "index.html")
 
@@ -10,7 +11,6 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, './build'),
-    publicPath: './',
     filename: 'bundle.js'
   },
   module: {
@@ -48,13 +48,6 @@ module.exports = {
       {
         test: indexHtml,
         use: [
-          {
-            loader: 'file-loader',
-            query: {
-              name: '[name].[ext]'
-            }
-          },
-          'extract-loader',
           'html-loader',
           'markup-inline-loader'
         ]
@@ -66,6 +59,10 @@ module.exports = {
       compressor: {
         warnings: false
       }
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'app/index.html'
     })
   ],
   devServer: {
