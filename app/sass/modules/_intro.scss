@@ -1,0 +1,50 @@
+.intro {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    font: rem(60px) $ave-bold;
+
+    span {
+      color: $red;
+    }
+  }
+
+  &__text {
+    max-width: rem(600px);
+    font-family: $ave-light;
+    line-height: rem(26px);
+    margin: rem(20px) 0 rem(30px);
+  }
+
+  &__anchors {
+    display: flex;
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+    font: rem(18px) $ave-bold;
+    color: $red;
+    cursor: pointer;
+
+    .icon-arrow {
+      margin-left: rem(10px);
+    }
+
+    &:first-child {
+      margin-right: rem(50px);
+    }
+  }
+}
