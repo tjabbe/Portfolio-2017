@@ -1,5 +1,5 @@
-const webpack = require('webpack')
-const path    = require('path')
+const webpack           = require('webpack')
+const path              = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const indexHtml = path.join(__dirname, "app", "index.html")
@@ -50,6 +50,17 @@ module.exports = {
         use: [
           'html-loader',
           'markup-inline-loader'
+        ]
+      },
+      {
+        test: /\.woff$/,
+        use: [
+          {
+            loader: 'file-loader',
+            query: {
+              name: 'fonts/[name].[ext]'
+            } 
+          }
         ]
       }
     ]
