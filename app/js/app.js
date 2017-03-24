@@ -3,19 +3,18 @@ import styles from '../sass/app.scss'
 
 class Application {
     
-    constructor() {
-        this.title = document.querySelector('.test')
-        this._init()
-    }
+  constructor() {
+    this._init()
+  }
 
-    _init() {
-        this._initEvents()
-    }
+  _init() {
+    this._initEvents()
+  }
 
-    _initEvents() {
-        console.log(this.title)
-        console.log('non')
-    }
+  _initEvents() {
+    console.log('working')
+  }
+
 }
 
 document.addEventListener("DOMContentLoaded", function() { 
