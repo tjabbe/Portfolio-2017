@@ -1,0 +1,60 @@
+.footer {
+  padding: rem(140px) 0;
+  text-align: center;
+
+  &__catchline {
+    font: rem(25px) $ave-bold;
+  }
+
+  &__contacts {
+    margin-top: rem(90px);
+
+    ul {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+
+    &--text {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      font: rem(16px) $ave-light;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $red;
+      }
+
+      &:after {
+        content: '';
+        width: 2px;
+        height: 2px;
+        background-color: $black;
+        display: block;
+        margin: 0 rem(50px);
+      }
+    }
+
+    &--icon {
+      path {
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        path {
+          fill: $red;
+        }
+        
+      }
+    }
+
+    &--icon.first-icon {
+      margin-right: rem(50px);
+    }
+  }
+
+}
