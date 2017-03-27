@@ -16,7 +16,15 @@
   &__title {
     font: rem(60px) $ave-bold;
 
-    span {
+    /* styling for animation purpose */
+    .js-title, .js-name {
+      display: inline-block;
+    }
+    .js-title {
+      opacity: 0;
+    }
+
+    .red {
       color: $red;
     }
   }
@@ -26,6 +34,12 @@
     font-family: $ave-light;
     line-height: rem(26px);
     margin: rem(20px) 0 rem(30px);
+
+    /* styling for animation purpose */
+    .js-content {
+      display: inline-block;
+      opacity: 0;
+    }
   }
 
   &__anchors {
@@ -41,6 +55,11 @@
 
     .icon-arrow {
       margin-left: rem(10px);
+    }
+
+    /* styling for animation purpose */
+    .js-anchor-first, .js-anchor-second {
+      opacity: 0;
     }
 
     &:first-child {
