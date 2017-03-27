@@ -1,6 +1,7 @@
 const webpack           = require('webpack')
 const path              = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CompressionPlugin = require("compression-webpack-plugin")
 
 const indexHtml = path.join(__dirname, "app", "index.html")
 
@@ -67,14 +68,21 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      compressor: {
+      compress: {
         warnings: false
       }
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'app/index.html'
-    })
+    }),
+    // new CompressionPlugin({
+    //   asset: "[path].gz[query]",
+    //   algorithm: "gzip",
+    //   test: /\.js$|\.css$|\.html$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // })
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './build')
