@@ -1,10 +1,11 @@
 // import styles to inject it to the head tag
 import styles from '../sass/app.scss'
 
-import TweenMax from 'gsap'
+import TweenMax from 'gsap/TweenMax'
 import TimelineMax from 'gsap/TimelineMax'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import ScrollMagic from 'scrollmagic'
+import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 
 class Application {
     
@@ -17,6 +18,12 @@ class Application {
     this.introContent    = document.querySelectorAll('.js-content')
     this.firstAnchor     = document.querySelectorAll('.js-anchor-first')
     this.secondAnchor    = document.querySelectorAll('.js-anchor-second')
+
+    // store all project container
+    this.projects = document.querySelectorAll('.project')
+
+    // store all project numbers
+    this.numbers = document.querySelectorAll('.project__number')
 
     this._init()
   }
@@ -86,6 +93,29 @@ class Application {
   }
 
   _initScroll() {
+
+    // init scroll magic controller
+    let controller = new ScrollMagic.Controller()
+
+    // fadein projects on scroll
+    this.projects.forEach(project => {
+
+      // create fadein tween
+      const fadeIn = TweenMax.from(project, 0.75, {
+        autoAlpha: 0,
+        ease: Power2.easeInOut
+      })
+
+      const scene = new ScrollMagic.Scene({
+        triggerElement: project,
+        triggerHook: 0.6,
+        reverse: false
+      })
+      .setTween(fadeIn)
+      .addTo(controller)
+    })
+
+    // parallax effect on project numbers
 
   }
 
