@@ -13,14 +13,17 @@ class Application {
     this.anchors = document.querySelectorAll('.intro__anchor')
 
     // variables for intro animations
+    this.header          = document.querySelector('.header')
     this.introTitle      = document.querySelectorAll('.js-title')
     this.introName       = document.querySelector('.js-name')
     this.introContent    = document.querySelectorAll('.js-content')
     this.firstAnchor     = document.querySelectorAll('.js-anchor-first')
     this.secondAnchor    = document.querySelectorAll('.js-anchor-second')
 
-    // store all project container
-    this.projects = document.querySelectorAll('.project')
+    // store all project container and project elements
+    this.projects      = document.querySelectorAll('.project')
+    this.projectNumber = document.querySelectorAll('.project__number')
+    this.projectCard   = document.querySelectorAll('.project__content')
 
     // store all project numbers
     this.numbers = document.querySelectorAll('.project__number')
@@ -53,42 +56,53 @@ class Application {
     }})
 
     // set elements position
-    tl.set([this.introTitle, this.introName], {y: 60})
     tl.set(this.introContent, {y: 20})
     tl.set([this.firstAnchor, this.secondAnchor], {y: -20})
 
-    // fadein title
-    tl.to(this.introTitle, 1, {
-      autoAlpha: 1,
+    // fadein name
+    tl.from(this.introName, 1, {
+      autoAlpha: 0,
       ease: Power2.easeInOut
     }, "start+=0.5")
 
-    // translate title to its position
-    tl.to([this.introTitle, this.introName], 0.75, {
-      y: 0,
+    // fadein title
+    tl.from(this.introTitle, 1, {
+      autoAlpha: 0,
       ease: Power2.easeInOut
-    }, "start+=1")
+    }, "start+=1.5")
+
+    // translate title to its position
+    tl.from([this.introTitle, this.introName], 0.75, {
+      y: 60,
+      ease: Power2.easeInOut
+    }, "start+=2")
 
     // animate content line by line
     tl.staggerTo(this.introContent, 0.75, {
       y: 0,
       autoAlpha: 1,
       ease: Power2.easeOut
-    }, 0.2, "start+=1.4")
+    }, 0.2, "start+=2.4")
 
     // animate first anchor
     tl.staggerTo(this.firstAnchor, 0.5, {
       y: 0,
       autoAlpha: 1,
       ease: Power2.easeOut
-    }, 0.1, "start+=1.9")
+    }, 0.1, "start+=2.9")
 
     // animate second anchor
     tl.staggerTo(this.secondAnchor, 0.5, {
       y: 0,
       autoAlpha: 1,
       ease: Power2.easeOut
-    }, 0.1, "start+=2.2")
+    }, 0.1, "start+=3.2")
+
+    // animate header
+    tl.from(this.header, 0.75, {
+      autoAlpha: 0,
+      ease: Power2.easeInOut
+    }, "start+=3.7")
       
   }
 
