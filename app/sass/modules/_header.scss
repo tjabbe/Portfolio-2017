@@ -38,9 +38,16 @@
   &__link {
     font-family: $ave-light;
 
+    &:hover {
+      a {
+        color: $red;
+      }
+    }
+
     a {
       text-decoration: none;
-      color: $black;      
+      color: $black;   
+      transition: all 0.2s;   
     }
       
   }
