@@ -1,6 +1,7 @@
 const webpack           = require('webpack')
 const path              = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin")
 
 const indexHtml = path.join(__dirname, "app", "index.html")
@@ -26,13 +27,15 @@ module.exports = {
         }]
       },
       {
-        test: /\.(scss|sass)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
+        test: /\.(css|scss|sass)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        })
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -75,6 +78,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'app/index.html'
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      allChunks: true
     }),
     // new CompressionPlugin({
     //   asset: "[path].gz[query]",
