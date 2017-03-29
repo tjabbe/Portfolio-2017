@@ -29,6 +29,10 @@ class Application {
     // store all project numbers
     this.numbers = document.querySelectorAll('.project__number')
 
+    // store footer elements
+    this.footerCatchline = document.querySelector('.footer__catchline')
+    this.footerContact   = document.querySelector('.footer__contacts')
+
     this._init()
   }
 
@@ -150,27 +154,32 @@ class Application {
     // init scroll magic controller
     let controller = new ScrollMagic.Controller()
 
+    // Create tweens
+
     // fadein projects on scroll
     this.projects.forEach(project => {
 
       // create fadein tween
-      const fadeIn = TweenMax.from(project, 1, {
+      const fadeInProject = TweenMax.from(project, 1, {
         autoAlpha: 0,
         ease: Power2.easeInOut
       })
 
-      const scene = new ScrollMagic.Scene({
+      const projectScene = new ScrollMagic.Scene({
         triggerElement: project,
         triggerHook: 0.9,
         reverse: false
       })
-      .setTween(fadeIn)
+      .setTween(fadeInProject)
+      .on('end', () => {
+        projectScene.destroy()
+      })
       .addTo(controller)
     })
 
     // parallax effect on project numbers
     this.projectNumber.forEach(number => {
-      const parallax = TweenMax.fromTo(number, 1,
+      const parallaxNumber = TweenMax.fromTo(number, 1,
         {
           y: 0,
           z: 0.1
@@ -181,18 +190,18 @@ class Application {
           ease: Linear.easeNone
         })
 
-      const scene = new ScrollMagic.Scene({
+      const numberScene = new ScrollMagic.Scene({
         triggerElement: number.parentNode,
         triggerHook: 0.9,
         duration: window.innerHeight / 2
       })
-      .setTween(parallax)
+      .setTween(parallaxNumber)
       .addTo(controller)
     })
 
     // parallax effect on project cards
     this.projectCard.forEach(card => {
-      const parallax = TweenMax.fromTo(card, 1,
+      const parallaxCard = TweenMax.fromTo(card, 1,
         {
           y: '100%'
         },
@@ -201,14 +210,49 @@ class Application {
           ease: Linear.easeNone
         })
 
-      const scene = new ScrollMagic.Scene({
+      const cardScene = new ScrollMagic.Scene({
         triggerElement: card.parentNode,
         triggerHook: 1,
         duration: window.innerHeight
       })
-      .setTween(parallax)
+      .setTween(parallaxCard)
       .addTo(controller)
     })
+
+    // fadein footer catchline
+    const fadeInCatchline = TweenMax.from(this.footerCatchline, 0.75, {
+      autoAlpha: 0,
+      ease: Power2.easeInOut
+    })
+
+    const catchlineScene = new ScrollMagic.Scene({
+      triggerElement: this.footerCatchline,
+      triggerHook: 0.9,
+      reverse: false
+    })
+    .setTween(fadeInCatchline)
+    .on('end', () => {
+        catchlineScene.destroy()
+      })
+    .addTo(controller)
+
+    // fadein footer contact 
+    const fadeInContact = TweenMax.from(this.footerContact, 0.75, {
+      autoAlpha: 0,
+      ease: Power2.easeInOut
+    })
+
+    const contactScene = new ScrollMagic.Scene({
+      triggerElement: this.footerContact,
+      triggerHook: 0.9,
+      reverse: false
+    })
+    .setTween(fadeInContact)
+    .on('end', () => {
+        contactScene.destroy()
+      })
+    .addTo(controller)
+
   }
 
 }
