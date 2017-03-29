@@ -7,6 +7,13 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import ScrollMagic from 'scrollmagic'
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 
+// Polyfill for IE/Edge
+(function () {
+   if ( typeof NodeList.prototype.forEach === "function" ) return false;
+   NodeList.prototype.forEach = Array.prototype.forEach
+})()
+
+
 class Application {
     
   constructor() {
