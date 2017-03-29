@@ -17,6 +17,7 @@ class Application {
     this.introTitle      = document.querySelectorAll('.js-title')
     this.introName       = document.querySelector('.js-name')
     this.introContent    = document.querySelectorAll('.js-content')
+    this.introLines      = ['.line-1']
     this.firstAnchor     = document.querySelectorAll('.js-anchor-first')
     this.secondAnchor    = document.querySelectorAll('.js-anchor-second')
 
@@ -33,6 +34,7 @@ class Application {
 
   _init() {
     this._initEvents()
+    this._parseIntro()
     this._animateIntro()
     this._initScroll()
   }
@@ -43,21 +45,59 @@ class Application {
     })
   }
 
+  _parseIntro() {
+    const paragraph      = document.querySelector('.intro__text')
+    const initialContent = paragraph.innerHTML
+    const words          = initialContent.split(' ')
+    const wrappedWords   = words
+      .filter(word => (word && word !== '\n'))
+      .map(word => (`<span class="intro__word">${word}</span>`))
+      .join(' ')
+    
+    paragraph.innerHTML = wrappedWords
+
+    const SPAN_CLASS     = 'line-'
+    const spans          = document.querySelectorAll('.intro__text span')
+    let currentOffsetTop = spans[0].offsetTop
+    let currentLine      = 1
+    let spanClass        = SPAN_CLASS + currentLine
+
+    spans.forEach(span => {
+      const offsetTop = span.offsetTop
+
+      // span on the same line
+      if (currentOffsetTop === offsetTop) {
+        span.classList.add(spanClass)
+      }
+      
+      // span not on the same line, increment the line count and add new class
+      else if (currentOffsetTop < offsetTop) {
+        currentLine = currentLine + 1
+        spanClass = SPAN_CLASS + currentLine
+        span.classList.add(spanClass)
+        currentOffsetTop = offsetTop
+        this.introLines.push('.' + spanClass)
+      }
+
+    })
+      
+    // Set the right font-family (default is Arial for the parsing otherwise it doesn't work with this font for some reaons)
+    paragraph.style.fontFamily = 'Averta-light'
+
+  }
+
   _scrollToElem(e) {
     const targetScroll = e.target.dataset.scroll
 
-    //TweenMax.to(window, 1, {scrollTo: document.querySelector(`.${targetScroll}`), ease: Power1.easeOut})
+    TweenMax.to(window, 1, {scrollTo: document.querySelector(`.${targetScroll}`), ease: Power1.easeOut})
   }
 
   _animateIntro() {
+
     //init Timeline, kill it on completion for performance gain
     let tl = new TimelineMax({onComplete: () => {
       tl.kill()
     }})
-
-    // set elements position
-    tl.set(this.introContent, {y: 20})
-    tl.set([this.firstAnchor, this.secondAnchor], {y: -20})
 
     // fadein name
     tl.from(this.introName, 1, {
@@ -77,24 +117,24 @@ class Application {
       ease: Power2.easeInOut
     }, "start+=2")
 
-    // animate content line by line
-    tl.staggerTo(this.introContent, 0.75, {
-      y: 0,
-      autoAlpha: 1,
+    //animate content line by line
+    tl.staggerFrom(this.introLines, 0.75, {
+      y: 20,
+      autoAlpha: 0,
       ease: Power2.easeOut
     }, 0.2, "start+=2.4")
 
     // animate first anchor
-    tl.staggerTo(this.firstAnchor, 0.5, {
-      y: 0,
-      autoAlpha: 1,
+    tl.staggerFrom(this.firstAnchor, 0.5, {
+      y: -20,
+      autoAlpha: 0,
       ease: Power2.easeOut
     }, 0.1, "start+=2.9")
 
     // animate second anchor
-    tl.staggerTo(this.secondAnchor, 0.5, {
-      y: 0,
-      autoAlpha: 1,
+    tl.staggerFrom(this.secondAnchor, 0.5, {
+      y: -20,
+      autoAlpha: 0,
       ease: Power2.easeOut
     }, 0.1, "start+=3.2")
 
@@ -107,7 +147,6 @@ class Application {
   }
 
   _initScroll() {
-
     // init scroll magic controller
     let controller = new ScrollMagic.Controller()
 

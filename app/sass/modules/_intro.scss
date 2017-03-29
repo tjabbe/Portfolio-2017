@@ -16,11 +16,10 @@
   &__title {
     font: rem(60px) $ave-bold;
 
-    /* styling for animation purpose */
-    .js-title, .js-name {
+    span {
       display: inline-block;
     }
-    
+
     .red {
       color: $red;
     }
@@ -28,15 +27,13 @@
 
   &__text {
     max-width: rem(600px);
-    font-family: $ave-light;
+    font-family: Arial;
     line-height: rem(26px);
     margin: rem(20px) 0 rem(30px);
+  }
 
-    /* styling for animation purpose */
-    .js-content {
-      display: inline-block;
-      opacity: 0;
-    }
+  &__word {
+    display: inline-block;
   }
 
   &__anchors {
@@ -50,13 +47,12 @@
     color: $red;
     cursor: pointer;
 
-    .icon-arrow {
-      margin-left: rem(10px);
+    .js-anchor-first, .js-anchor-second {
+      pointer-events: none;
     }
 
-    /* styling for animation purpose */
-    .js-anchor-first, .js-anchor-second {
-      opacity: 0;
+    .icon-arrow {
+      margin-left: rem(10px);
     }
 
     &:first-child {
