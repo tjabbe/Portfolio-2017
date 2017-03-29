@@ -16,7 +16,7 @@ class Application {
     this.header          = document.querySelector('.header')
     this.introTitle      = document.querySelectorAll('.js-title')
     this.introName       = document.querySelector('.js-name')
-    this.introContent    = document.querySelectorAll('.js-content')
+    this.introContent    = document.querySelectorAll('.intro__text')
     this.introLines      = ['.line-1']
     this.firstAnchor     = document.querySelectorAll('.js-anchor-first')
     this.secondAnchor    = document.querySelectorAll('.js-anchor-second')
@@ -107,6 +107,8 @@ class Application {
     let tl = new TimelineMax({onComplete: () => {
       tl.kill()
     }})
+
+    TweenMax.set(this.introContent, {visibility: 'inherit'})
 
     // fadein name
     tl.from(this.introName, 1, {

@@ -1,6 +1,7 @@
 .header {
   position: absolute;
   padding-top: rem(40px);
+  visibility: hidden;
 
   @include medium {
     left: 50%;

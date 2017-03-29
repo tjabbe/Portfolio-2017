@@ -30,6 +30,7 @@
 
     span {
       display: inline-block;
+      visibility: hidden;
     }
 
     .red {
@@ -42,6 +43,7 @@
     font-family: Arial;
     line-height: rem(26px);
     margin: rem(20px) 0 rem(30px);
+    visibility: hidden;
   }
 
   &__word {
@@ -61,6 +63,7 @@
 
     .js-anchor-first, .js-anchor-second {
       pointer-events: none;
+      visibility: hidden;
     }
 
     .icon-arrow {
