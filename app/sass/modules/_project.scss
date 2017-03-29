@@ -75,12 +75,12 @@
 
   &__number {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     font: rem(400px) $ave-bold;
     line-height: 18rem;
     color: $white;
     opacity: 0.2;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
   &__content {

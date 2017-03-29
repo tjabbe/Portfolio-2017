@@ -154,14 +154,14 @@ class Application {
     this.projects.forEach(project => {
 
       // create fadein tween
-      const fadeIn = TweenMax.from(project, 0.75, {
+      const fadeIn = TweenMax.from(project, 1, {
         autoAlpha: 0,
         ease: Power2.easeInOut
       })
 
       const scene = new ScrollMagic.Scene({
         triggerElement: project,
-        triggerHook: 0.7,
+        triggerHook: 0.9,
         reverse: false
       })
       .setTween(fadeIn)
@@ -169,7 +169,46 @@ class Application {
     })
 
     // parallax effect on project numbers
+    this.projectNumber.forEach(number => {
+      const parallax = TweenMax.fromTo(number, 1,
+        {
+          y: 0,
+          z: 0.1
+        },
+        {
+          y: 90,
+          z: 0.1,
+          ease: Linear.easeNone
+        })
 
+      const scene = new ScrollMagic.Scene({
+        triggerElement: number.parentNode,
+        triggerHook: 0.9,
+        duration: window.innerHeight / 2
+      })
+      .setTween(parallax)
+      .addTo(controller)
+    })
+
+    // parallax effect on project cards
+    this.projectCard.forEach(card => {
+      const parallax = TweenMax.fromTo(card, 1,
+        {
+          y: '100%'
+        },
+        {
+          y: '-100%',
+          ease: Linear.easeNone
+        })
+
+      const scene = new ScrollMagic.Scene({
+        triggerElement: card.parentNode,
+        triggerHook: 1,
+        duration: window.innerHeight
+      })
+      .setTween(parallax)
+      .addTo(controller)
+    })
   }
 
 }
