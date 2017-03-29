@@ -61,13 +61,23 @@
     color: $red;
     cursor: pointer;
 
+    &:hover {
+
+      /* :( */
+      .icon-arrow {
+        transform: translate3d(0, 4px, 0)!important;
+      }
+    }
+
     .js-anchor-first, .js-anchor-second {
       pointer-events: none;
       visibility: hidden;
     }
 
     .icon-arrow {
+      position: relative;
       margin-left: rem(10px);
+      transition: all 0.2s;
     }
 
     &:first-child {
