@@ -161,7 +161,7 @@ class Application {
 
       const scene = new ScrollMagic.Scene({
         triggerElement: project,
-        triggerHook: 0.6,
+        triggerHook: 0.7,
         reverse: false
       })
       .setTween(fadeIn)
