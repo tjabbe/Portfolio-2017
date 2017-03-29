@@ -10,7 +10,8 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 class Application {
     
   constructor() {
-    this.anchors = document.querySelectorAll('.intro__anchor')
+
+    this.documentHeight = document.documentElement.scrollHeight
 
     // variables for intro animations
     this.header          = document.querySelector('.header')
@@ -18,6 +19,7 @@ class Application {
     this.introName       = document.querySelector('.js-name')
     this.introContent    = document.querySelectorAll('.intro__text')
     this.introLines      = ['.line-1']
+    this.anchors = document.querySelectorAll('.intro__anchor')
     this.firstAnchor     = document.querySelectorAll('.js-anchor-first')
     this.secondAnchor    = document.querySelectorAll('.js-anchor-second')
 
@@ -188,19 +190,17 @@ class Application {
     this.projectNumber.forEach(number => {
       const parallaxNumber = TweenMax.fromTo(number, 1,
         {
-          y: 0,
-          z: 0.1
+          y: 0
         },
         {
           y: 90,
-          z: 0.1,
           ease: Linear.easeNone
         })
 
       const numberScene = new ScrollMagic.Scene({
         triggerElement: number.parentNode,
         triggerHook: 0.9,
-        duration: window.innerHeight / 2
+        duration: window.innerHeight
       })
       .setTween(parallaxNumber)
       .addTo(controller)
@@ -219,8 +219,8 @@ class Application {
 
       const cardScene = new ScrollMagic.Scene({
         triggerElement: card.parentNode,
-        triggerHook: 1,
-        duration: window.innerHeight
+        triggerHook: 0.9,
+        duration: window.innerHeight * 1.2//this.documentHeight
       })
       .setTween(parallaxCard)
       .addTo(controller)
