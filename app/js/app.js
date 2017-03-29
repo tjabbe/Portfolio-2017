@@ -40,7 +40,12 @@ class Application {
     this._initEvents()
     this._parseIntro()
     this._animateIntro()
-    this._initScroll()
+
+    // Init scroll animation only for tablet/desktop width
+    if (window.innerWidth > 767) {
+      this._initScroll()
+    }
+    
   }
 
   _initEvents() {

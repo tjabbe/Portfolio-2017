@@ -91,6 +91,10 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
+
+    @include medium {
+      width: 50%;
+    }
   }
 
   &__title {

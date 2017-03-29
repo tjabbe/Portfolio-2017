@@ -5,3 +5,13 @@ Function to convert px to rem
 @function rem($px, $base: $base-font-size) {
   @return ($px / $base) * 1rem;
 }
+
+/*--------------------------------------------------------------
+Media queries
+--------------------------------------------------------------*/
+
+@mixin medium {
+  @media (min-width: #{$small}) and (max-width: #{$medium}) {
+    @content;
+  }
+}

@@ -5,6 +5,10 @@
 
   &__container {
     height: 100%;
+
+    @include medium {
+      padding: 0 rem(30px);
+    }
   }
 
   &__content {

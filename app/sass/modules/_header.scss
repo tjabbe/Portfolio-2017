@@ -1,6 +1,11 @@
 .header {
   position: absolute;
   padding-top: rem(40px);
+
+  @include medium {
+    left: 50%;
+    transform: translate(-50%);
+  }
   
   &__items {
     display: flex;
