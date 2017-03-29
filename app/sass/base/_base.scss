@@ -1,19 +1,23 @@
 html, body {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    position: relative;
-    font-family: $ave;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  position: relative;
+  font-family: $ave;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow: hidden;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
