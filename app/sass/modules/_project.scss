@@ -4,6 +4,10 @@
   height: rem(400px);
   margin-bottom: rem(200px);
 
+  @include small {
+    margin-bottom: rem(150px);
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
