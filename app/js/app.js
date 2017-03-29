@@ -11,8 +11,6 @@ class Application {
     
   constructor() {
 
-    this.documentHeight = document.documentElement.scrollHeight
-
     // variables for intro animations
     this.header          = document.querySelector('.header')
     this.introTitle      = document.querySelectorAll('.js-title')
@@ -220,7 +218,7 @@ class Application {
       const cardScene = new ScrollMagic.Scene({
         triggerElement: card.parentNode,
         triggerHook: 0.9,
-        duration: window.innerHeight * 1.2//this.documentHeight
+        duration: window.innerHeight * 1.2
       })
       .setTween(parallaxCard)
       .addTo(controller)
