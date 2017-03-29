@@ -15,3 +15,15 @@ Media queries
     @content;
   }
 }
+
+@mixin medium--below {
+  @media (max-width: #{$medium}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: #{$small - 1px}) {
+    @content;
+  }
+}

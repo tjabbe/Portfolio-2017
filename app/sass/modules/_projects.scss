@@ -1,4 +1,8 @@
 .projects {
   background-color: $grey;
   padding: rem(200px) 0;
+
+  @include small {
+    padding: rem(100px) 0;
+  }
 }

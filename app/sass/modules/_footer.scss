@@ -2,8 +2,16 @@
   padding: rem(140px) 0;
   text-align: center;
 
+  @include small {
+    padding: rem(70px) 0;
+  }
+
   &__catchline {
     font: rem(25px) $ave-bold;
+
+    @include small {
+      font-size: rem(24px);
+    }
   }
 
   &__contacts {
@@ -11,6 +19,17 @@
 
     ul {
       display: flex;
+      justify-content: center;
+
+      @include small {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    @include small {
       justify-content: center;
     }
   }
@@ -25,6 +44,10 @@
       font: rem(16px) $ave-light;
       transition: all 0.2s ease-in-out;
 
+      @include small {
+        display: block;
+      }
+
       &:hover {
         color: $red;
       }
@@ -36,6 +59,10 @@
         background-color: $black;
         display: block;
         margin: 0 rem(50px);
+
+        @include small {
+          margin: rem(20px) auto;
+        }
       }
     }
 

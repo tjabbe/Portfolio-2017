@@ -13,6 +13,13 @@
     top:0;
     max-height: rem(400px);
 
+    @include small {
+      position: relative;
+      img {
+        width: 100%;
+      }
+    }
+
     &:hover {
       .project__overlay {
         background-color: rgba(0, 0, 0, 0.4);
@@ -35,6 +42,13 @@
 
     .project__number {
       left: 10px;
+
+      @include small {
+        left: initial;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
     }
   }
 
@@ -49,6 +63,13 @@
 
     .project__number {
       right: 10px;
+
+      @include small {
+        right: initial;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
     }
   }
 
@@ -81,6 +102,12 @@
     color: $white;
     opacity: 0.2;
     transition: opacity 0.3s ease-in-out;
+
+    @include small {
+      font-size: rem(200px);
+      line-height: rem(140px);
+      opacity: 0.5;
+    }
   }
 
   &__content {
@@ -94,6 +121,14 @@
 
     @include medium {
       width: 50%;
+    }
+
+    @include small {
+      width: 100%;
+      position: relative;
+      top: initial;
+      transform: none;
+      padding: rem(20px) rem(36px) rem(26px) rem(30px);
     }
   }
 

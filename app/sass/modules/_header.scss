@@ -6,6 +6,10 @@
     left: 50%;
     transform: translate(-50%);
   }
+
+  @include small {
+    padding-top: rem(20px);
+  }
   
   &__items {
     display: flex;

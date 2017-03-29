@@ -9,6 +9,10 @@
     @include medium {
       padding: 0 rem(30px);
     }
+
+    @include small {
+      padding: 0 rem(10px);
+    }
   }
 
   &__content {
@@ -19,6 +23,10 @@
 
   &__title {
     font: rem(60px) $ave-bold;
+
+    @include small {
+      font-size: rem(40px);
+    }
 
     span {
       display: inline-block;
